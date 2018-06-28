@@ -1,0 +1,44 @@
+html,
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.contenedor-global {
+  display: grid;
+  grid-template-areas: "titulo" "temperatura" "luz";
+  max-width: 1100px;
+  margin: 0 auto; }
+
+.titulo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center; }
+
+.temperatura {
+  padding: 0 1rem 0 1rem; }
+
+.luz {
+  padding: 0 1rem 0 1rem; }
+
+.estado-ok {
+  width: 50px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border: 1px solid black;
+  border-radius: 50%;
+  background: #00ff00; }
+
+.estado-error {
+  width: 50px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border: 1px solid black;
+  border-radius: 50%;
+  background: #ff0000; }

@@ -1,0 +1,99 @@
+@import "./_theme";
+// Inputs
+@mixin input-select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+// Botones
+@mixin button( $color) {
+    background-color: $color;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    &:hover {
+        background-color: darken($color, 10%)
+    }
+}
+
+@mixin button-outline ( $color) {
+    background-color: transparent;
+    border: 1px solid $color;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    display: block;
+    text-align: center;
+    color: $color;
+    text-decoration: none;
+    &:hover {
+        transition-duration: 0.4s;
+        background-color: $color;
+        color: white;
+    }
+    .block {
+        width: 100%;
+    }
+}
+
+// Box-sizing
+@mixin box-sizing( $box-model) {
+    box-sizing: $box-model;
+}
+
+// Para telefono en ambas orientaciones
+@mixin phone() {
+    @media only screen and (min-width: $phone-min-width) and (max-height: $phone-max-height) {
+        @content;
+    }
+}
+
+// Para telefono en vertical
+@mixin phone-portrait() {
+    @media only screen and (min-width: $phone-min-width) and (max-width: $phone-max-width) and (orientation: portrait) {
+        @content;
+    }
+}
+
+// Para telefono en horizontal
+@mixin phone-landscape() {
+    @media only screen and (min-height: $phone-min-height) and (max-height: $phone-max-height) and (orientation: landscape) {
+        @content;
+    }
+}
+
+// Para tablet en ambas orientaciones
+@mixin tablet() {
+    @media only screen and (min-width: $tablet-min-width) and (max-height: $tablet-max-height) {
+        @content;
+    }
+}
+
+// Para tablet en vertical
+@mixin tablet-portrait() {
+    @media only screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) and (orientation: portrait) {
+        @content;
+    }
+}
+
+// Para tablet en horizontal
+@mixin tablet-landscape() {
+    @media only screen and (min-height: $tablet-min-height) and (max-height: $tablet-max-height) and (orientation: landscape) {
+        @content;
+    }
+}
+
+// Para escritorio
+@mixin desktop() {
+    @media only screen and (min-width: $desktop-min-width) {
+        @content;
+    }
+}
