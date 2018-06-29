@@ -1,3 +1,6 @@
+//para enviar email
+var email=require('./email')
+
 const socket = io();
 
 const temperatureDisplay = document.getElementById('temperature');
@@ -108,6 +111,10 @@ socket.on('temp', function(data) {
         dataChartTemperature.datasets[0].backgroundColor = '#ff0000';
     } else {
         dataChartTemperature.datasets[0].backgroundColor = '#00ff00';
+    }
+    //manda alerta por temperature
+    if (temp > 30) {
+      email.tem(tem) //envia email de alerta 
     }
     if (luz >= 750) {
         dataChartLux.datasets[0].backgroundColor = '#ff0000';
