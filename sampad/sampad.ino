@@ -51,7 +51,7 @@ void loop() {
   Serial.print(",'lux':");
   Serial.print(lux);
   Serial.print(",'lampara':");
-  if((tem<=25) and(lux<=20) ){
+  if((tem<=25) and(lux<=750) ){
       Serial.println("1}");
       digitalWrite (pinOut, HIGH);
   }else{

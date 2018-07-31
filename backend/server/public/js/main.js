@@ -1,6 +1,5 @@
 //para enviar email
-var email=require('./email')
-
+// var email = require('./email')
 const socket = io();
 
 const temperatureDisplay = document.getElementById('temperature');
@@ -114,7 +113,7 @@ socket.on('temp', function(data) {
     }
     //manda alerta por temperature
     if (temp > 30) {
-      email.tem(tem) //envia email de alerta 
+        email.tem(tem) //envia email de alerta 
     }
     if (luz >= 750) {
         dataChartLux.datasets[0].backgroundColor = '#ff0000';
