@@ -6,7 +6,7 @@ const app = express();
 app.get('/datos', function(req, res) {
 
     Dato.find({})
-        .exec((err, Datos) => {
+        .exec((err, datos) => {
 
             if (err) {
                 return res.status(400).json({
@@ -18,7 +18,7 @@ app.get('/datos', function(req, res) {
             Dato.count({}, (err, conteo) => {
                 res.json({
                     ok: true,
-                    Datos,
+                    datos,
                     length: conteo
                 })
             });
@@ -49,7 +49,7 @@ app.post('/datos', function(req, res) {
 
         res.json({
             ok: true,
-            Dato: DatoDB
+            dato: DatoDB
         })
 
     });
@@ -71,7 +71,7 @@ app.put('/datos/:id', function(req, res) {
 
         res.json({
             ok: true,
-            Dato: DatoDB
+            dato: DatoDB
         })
     });
 })
@@ -95,7 +95,7 @@ app.delete('/datos/:id', function(req, res) {
 
         res.json({
             ok: true,
-            Dato: DatoBorrado
+            dato: DatoBorrado
         })
     });
 

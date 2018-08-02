@@ -1,14 +1,16 @@
 require('./config/config');
 
-
 const http = require('http');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const SocketIO = require('socket.io');
+const _db = require('./js/conexionDB');
 
 const app = express();
 const server = http.createServer(app);
 const io = SocketIO.listen(server);
+app.use(cors());
 
 const bodyParser = require('body-parser');
 
@@ -34,7 +36,7 @@ mongoose.connect(process.env.URLDB, {
 
 app.use(express.static(__dirname + '/public'));
 
-server.listen(3000, () => console.log('server on port 3000'));
+server.listen(process.env.PORT, () => console.log('server on port', process.env.PORT));
 
 const SerialPort = require('serialport');
 const ReadLine = SerialPort.parsers.Readline;
@@ -49,8 +51,14 @@ parser.on('open', function() {
 });
 
 parser.on('data', function(data) {
-    console.log(data);
-    io.emit('temp', data.toString());
+    _db.addDatos(data)
+        .then(function(response) {
+            io.emit('dataAPP');
+        })
+        .catch(function(error) {
+            // console.log(error);
+            console.log(error.response.data.err)
+        });
 });
 
 parser.on('error', (err) => console.log(err));
